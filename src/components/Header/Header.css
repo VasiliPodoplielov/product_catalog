@@ -1,0 +1,23 @@
+header {
+  background: linear-gradient(90deg, #aea4e3, #d3ffe8);
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.75);
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.user__info {
+  margin-right: 30px;
+}
+
+.actions__login {
+  margin-right: 10px;
+}
