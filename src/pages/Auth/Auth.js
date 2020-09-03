@@ -1,20 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Auth.css';
 
 const Auth = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isEmailFieldValid, setEmailFieldValid] = useState(true);
+  const [isPasswordFieldValid, setPasswordFieldValid] = useState(true);
+
   return (
       <div className='auth__wrapper'>
         <form className="auth__form">
           <p className="form__title">Вход</p>
           <div className="auth__form-group form-group">
-            <label htmlFor="exampleInputEmail1">Логин</label>
-            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            <small className="form-text text-danger">Поле обязательно для заполнения</small>
+            <label htmlFor="email">Логин</label>
+            <input
+                type="email"
+                className="form-control"
+                id="email" aria-describedby="emailHelp"
+                placeholder="Введите ваш email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            {!isEmailFieldValid ? <small className="form-text text-danger">Поле обязательно для заполнения</small> : ''}
           </div>
           <div className="auth__form-group form-group">
-            <label htmlFor="exampleInputPassword1">Пароль</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" />
-            <small className="form-text text-danger">Поле обязательно для заполнения</small>
+            <label htmlFor="password">Пароль</label>
+            <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Введите пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            {!isPasswordFieldValid ? <small className="form-text text-danger">Поле обязательно для заполнения</small> : ''}
           </div>
           <button type="submit" className="btn btn-primary">Вход</button>
         </form>
