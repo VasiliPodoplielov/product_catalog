@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
 import './Header.css';
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrentUser, signOut} from "../../pages/Auth/authActions";
+import firebase from "../../firebase";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  let userEmail = useSelector(state => state.authReducer.userEmail);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user);
+        if (user) {
+          dispatch(setCurrentUser(user.email));
+        }
+    });
+  }, '');
+
   return (
       <header>
           <nav className="navbar navbar-expand-lg navbar-light">
@@ -17,7 +32,7 @@ const Header = () => {
             </div>
             <div className="header__right">
               <div className="user__info">
-                <span className="user__name">Имя юзера</span>
+                {userEmail ? <span className="user__name">{userEmail}</span> : null}
               </div>
               <div className="header__actions">
                 <Link to="/auth">
@@ -26,6 +41,13 @@ const Header = () => {
                 <Link to="/registry">
                   <button type="button" className="btn btn-outline-primary btn-sm">Регистрация</button>
                 </Link>
+                <button
+                    type="button"
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => dispatch(signOut())}
+                >
+                  Выйти
+                </button>
               </div>
             </div>
           </nav>
