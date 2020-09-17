@@ -11,12 +11,36 @@ const Header = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user);
-        if (user) {
-          dispatch(setCurrentUser(user.email));
-        }
+      if (user) {
+        dispatch(setCurrentUser(user.email));
+      }
     });
-  }, '');
+  }, []);
+
+  let actionsButtons;
+
+  if (userEmail) {
+    actionsButtons = (
+        <button
+            type="button"
+            className="btn btn-outline-primary btn-sm actions__logout"
+            onClick={() => dispatch(signOut())}
+        >
+          Выйти
+        </button>
+    )
+  } else {
+    actionsButtons = (
+        <React.Fragment>
+          <Link to="/auth">
+            <button type="button" className="btn btn-outline-primary btn-sm actions__login">Войти</button>
+          </Link>
+          <Link to="/registry">
+            <button type="button" className="btn btn-outline-primary btn-sm">Регистрация</button>
+          </Link>
+        </React.Fragment>
+    )
+  }
 
   return (
       <header>
@@ -35,19 +59,7 @@ const Header = () => {
                 {userEmail ? <span className="user__name">{userEmail}</span> : null}
               </div>
               <div className="header__actions">
-                <Link to="/auth">
-                  <button type="button" className="btn btn-outline-primary btn-sm actions__login">Войти</button>
-                </Link>
-                <Link to="/registry">
-                  <button type="button" className="btn btn-outline-primary btn-sm">Регистрация</button>
-                </Link>
-                <button
-                    type="button"
-                    className="btn btn-outline-primary btn-sm"
-                    onClick={() => dispatch(signOut())}
-                >
-                  Выйти
-                </button>
+                {actionsButtons}
               </div>
             </div>
           </nav>

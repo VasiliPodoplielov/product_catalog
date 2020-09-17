@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../../components/AuthForm/AuthForm.css';
 import AuthForm from "../../components/AuthForm/AuthForm";
-import {useLocation} from 'react-router-dom';
+import {Redirect, useLocation} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {userAuth, userRegistry} from "./authActions";
 
@@ -10,6 +10,13 @@ const Auth = () => {
   const dispatch = useDispatch();
   const registrationSuccessful = useSelector(state => state.authReducer.registrationSuccessful);
   const errorMessage = useSelector(state => state.authReducer.errorMessage);
+  let userEmail = useSelector(state => state.authReducer.userEmail);
+
+  if (userEmail) {
+    return (
+        <Redirect to='/' />
+    )
+  }
 
   const authFormOptions = {
     formTitle: 'Вход',
