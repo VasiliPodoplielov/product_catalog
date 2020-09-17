@@ -1,3 +1,11 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
+h1 {
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.border-red {
+  border-color: #f55353;
+}

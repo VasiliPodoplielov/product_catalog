@@ -1,0 +1,17 @@
+.card {
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.75);
+}
+.card__img {
+  padding: 10px;
+  text-align: center;
+}
+
+.card-img-top {
+  width: 80%;
+}
+
+.card__price {
+  font-weight: bold;
+  color: #293238;
+  font-size: 20px;
+}

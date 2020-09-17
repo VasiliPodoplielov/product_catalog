@@ -21,13 +21,18 @@ const Header = () => {
 
   if (userEmail) {
     actionsButtons = (
-        <button
-            type="button"
-            className="btn btn-outline-primary btn-sm actions__logout"
-            onClick={() => dispatch(signOut())}
-        >
-          Выйти
-        </button>
+        <React.Fragment>
+          <Link to="/edit">
+            <button type="button" className="btn btn-outline-primary btn-sm">Добавить товар</button>
+          </Link>
+          <button
+              type="button"
+              className="btn btn-outline-primary btn-sm actions__logout"
+              onClick={() => dispatch(signOut())}
+          >
+            Выйти
+          </button>
+        </React.Fragment>
     )
   } else {
     actionsButtons = (

@@ -3,6 +3,7 @@ import {Route, Switch} from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import Auth from "./pages/Auth/Auth";
 import Catalog from "./pages/Catalog/Catalog";
+import ProductEdit from "./pages/ProductEdit/ProductEdit";
 
 export const routes = (
     <Switch>
@@ -23,7 +24,7 @@ export const routes = (
       </Route>
       <Route path="/edit" exact>
         <Layout>
-          Страница добавления товара
+          <ProductEdit />
         </Layout>
       </Route>
       <Route path="/edit/:productId" exact>

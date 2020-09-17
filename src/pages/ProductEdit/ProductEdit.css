@@ -1,0 +1,29 @@
+.edit__wrapper {
+  min-height: calc(100vh - 56px);
+  background: linear-gradient(90deg, #e1f2e2, #bad9bf, #cde5f7);
+  padding: 50px 0;
+}
+
+.edit__form label {
+  margin-bottom: 0;
+}
+.edit__form input {
+  margin-bottom: 10px;
+}
+
+.edit__form .form-control-file {
+  width: auto;
+}
+
+.price__block {
+  display: flex;
+}
+
+.price__item {
+  width: 150px;
+  margin-right: 20px;
+}
+
+.price__item-date {
+  width: 200px;
+}

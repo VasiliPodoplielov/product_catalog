@@ -9,8 +9,3 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
 }
-
-.catalog__title {
-  margin: 0 0 30px;
-  text-align: center;
-}
